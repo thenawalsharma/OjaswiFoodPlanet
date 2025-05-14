@@ -1,0 +1,6 @@
+@OjaswiFoodPlanet.API_HostAddress = http://localhost:5122
+
+GET {{OjaswiFoodPlanet.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
