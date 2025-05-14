@@ -14,7 +14,7 @@ steps:
   - task: UseDotNet@2
     inputs:
       packageType: 'sdk'
-      version: '8.0.100' # Use your .NET 8 SDK version
+      version: '8.0' # Use your .NET 8 SDK version
       installationPath: $(Agent.ToolsDirectory)/dotnet
 
   - task: NuGetCommand@2
