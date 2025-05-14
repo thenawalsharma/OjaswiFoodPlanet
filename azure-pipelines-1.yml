@@ -13,7 +13,7 @@ steps:
   - task: UseDotNet@2
     inputs:
       packageType: 'sdk'
-      version: '8.x.x' # Use your .NET 8 SDK version
+      version: '8.0.100' # Use your .NET 8 SDK version
       installationPath: $(Agent.ToolsDirectory)/dotnet
 
   - task: NuGetCommand@2
@@ -40,7 +40,7 @@ steps:
 
   - task: AzureWebApp@1
     inputs:
-      azureSubscription: 'azure-connection'             # name of your service connection
+      azureSubscription: 'Azure subscription 1(89419137-5785-430a-8c07-eb13e73d8203)'             # name of your service connection
       appType: 'webApp'                                 # or 'webAppLinux' for Linux
       appName: 'ojaswiffodplanet'                # name of your Azure Web App
       package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
