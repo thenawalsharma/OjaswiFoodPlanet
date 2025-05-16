@@ -1,9 +1,21 @@
 ﻿using OFP.API;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+string connectionString = builder.Configuration.GetConnectionString("AppConfig");
+
+// Load config and enable Key Vault access
+builder.Configuration.AddAzureAppConfiguration(connectionString);
+
+//builder.Services.AddDbContext<ApplicationDbContext>(options =>
+//    options.UseSqlServer(connectionString));
+
+
+// DB Context with connection string from Key Vault
+builder.Services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(builder.Configuration["connectionString"]));
 
 // Add services to the container.
 

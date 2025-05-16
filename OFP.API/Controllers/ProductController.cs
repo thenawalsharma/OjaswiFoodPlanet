@@ -9,10 +9,12 @@ namespace OFP.API.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        IConfiguration _configuration;
 
-        public ProductsController(ApplicationDbContext context)
+        public ProductsController(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         [HttpGet]
@@ -20,6 +22,7 @@ namespace OFP.API.Controllers
         {
             try
             {
+                string configValue = _configuration["config1"]; // Example of using IConfiguration
                 var products =await _context.Product.ToListAsync();// ✅ EF Core async method
                 return Ok(products);
             }
