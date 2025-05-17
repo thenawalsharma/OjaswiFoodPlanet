@@ -22,7 +22,6 @@ namespace OFP.API.Controllers
         {
             try
             {
-                string configValue = _configuration["config1"]; // Example of using IConfiguration
                 var products =await _context.Product.ToListAsync();// ✅ EF Core async method
                 return Ok(products);
             }
