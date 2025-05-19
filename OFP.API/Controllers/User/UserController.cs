@@ -74,8 +74,20 @@ namespace OFP.API.Controllers.Users
                 token,
                 userId = user.UserId,
                 name = $"{user.FirstName} {user.LastName}",
-                email = user.EmailAddress
+                email = user.EmailAddress,
+                phone1= user.Phone1,
             });
+        }
+
+        // In your UserController.cs
+        [HttpGet("{email}")]
+        public async Task<IActionResult> GetUserByEmail(string email)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.EmailAddress == email && !u.IsDeleted);
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
         }
 
         private string GenerateJwtToken(AppUser user)
