@@ -41,5 +41,8 @@ namespace OFP.API.DTO
         public bool IsDeleted { get; set; } = false;
 
         public bool IsActive { get; set; } = true;
+
+        public string? OTP { get; set; }  // Temporary reset OTP
+        public DateTime? OTPGeneratedAt { get; set; }  // When OTP was generated
     }
 }
