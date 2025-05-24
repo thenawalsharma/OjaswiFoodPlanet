@@ -1,4 +1,4 @@
-﻿namespace OFP.API
+﻿namespace OFP.API.Helper
 {
     public static class PasswordHelper
     {

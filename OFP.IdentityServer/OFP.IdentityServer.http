@@ -1,0 +1,6 @@
+@OFP.IdentityServer_HostAddress = http://localhost:5242
+
+GET {{OFP.IdentityServer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
